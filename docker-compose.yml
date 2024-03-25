@@ -1,0 +1,21 @@
+
+services:
+  endpoint:
+    build: .
+    command: python3 app.py
+    working_dir: /app
+    volumes:
+      - ./:/app
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              count: all
+              capabilities: [gpu]
+    environment:
+      - NVIDIA_VISIBLE_DEVICES=all
+    ports:
+      - 6060:6060
+    stdin_open: true
+    tty: true

@@ -5,7 +5,7 @@ from fastapi.middleware.cors import CORSMiddleware
 
 app = FastAPI()
 
-origins = ['http://0.0.0.0:8080', 'http://192.168.100.123:8080']
+origins = ['http://0.0.0.0:6060', 'http://192.168.100.123:6060']
 
 app.add_middleware(
     CORSMiddleware,
@@ -17,5 +17,5 @@ app.add_middleware(
 
 
 if __name__ == "__main__":
-    uvicorn.run("app:app", host='0.0.0.0', port=8080,
+    uvicorn.run("app:app", host='0.0.0.0', port=6060,
                 reload=True, workers=4)
