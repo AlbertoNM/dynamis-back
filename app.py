@@ -3,9 +3,11 @@ import uvicorn
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 
+from routes import graph
+
 app = FastAPI()
 
-origins = ['http://0.0.0.0:6060', 'http://192.168.100.123:6060']
+origins = ['http://0.0.0.0:6161', 'http://192.168.201.75:6161']
 
 app.add_middleware(
     CORSMiddleware,
@@ -14,6 +16,10 @@ app.add_middleware(
     allow_methods=["*"],
     allow_headers=["*"],
 )
+
+# Routes
+
+app.include_router(graph.router)
 
 
 if __name__ == "__main__":
